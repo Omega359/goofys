@@ -879,9 +879,10 @@ func (fs *Goofys) OpenFile(
 	fs.nextHandleID++
 
 	fs.fileHandles[handleID] = fh
-
+	
+	op.UseDirectIO = true
 	op.Handle = handleID
-	op.KeepPageCache = true
+	op.KeepPageCache = false
 
 	return
 }
